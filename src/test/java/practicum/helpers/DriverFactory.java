@@ -4,17 +4,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
+
 
 public class DriverFactory {
     public static WebDriver createDriver() {
         String browser = System.getProperty("browser", "chrome");
 
         if (browser.equalsIgnoreCase("firefox")) {
-            return new FirefoxDriver(new FirefoxOptions());
+            FirefoxDriver driver = new FirefoxDriver();
+            driver.manage().window().maximize();
+            return driver;
         } else {
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+            options.addArguments("--no-sandbox", "--disable-dev-shm-usage", "--start-maximized");
+
             return new ChromeDriver(options);
               }
         }
