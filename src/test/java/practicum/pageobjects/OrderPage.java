@@ -7,8 +7,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class OrderPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
 
     public OrderPage(WebDriver driver) {
         this.driver = driver;
@@ -17,50 +17,50 @@ public class OrderPage {
     // Первый шаг формы
 
     // Поле Имя
-    private By nameInput = By.xpath("//input[@placeholder='* Имя']");
+    private final By nameInput = By.xpath("//input[@placeholder='* Имя']");
 
     // Поле Фамилия
-    private By surnameInput = By.xpath("//input[@placeholder='* Фамилия']");
+    private final By surnameInput = By.xpath("//input[@placeholder='* Фамилия']");
 
     // Поле Адрес
-    private By addressInput = By.xpath("//input[@placeholder='* Адрес: куда привезти заказ']");
+    private final By addressInput = By.xpath("//input[@placeholder='* Адрес: куда привезти заказ']");
 
     // Поле Станция Метро
-    private By metroStationInput = By.xpath("//input[@placeholder='* Станция метро']");
+    private final By metroStationInput = By.xpath("//input[@placeholder='* Станция метро']");
 
     // Поле Телефон
-    private By phoneInput = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']");
+    private final By phoneInput = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']");
 
     // Кнопка "Далее"
-    private By nextButton = By.xpath("//button[text()='Далее']");
+    private final By nextButton = By.xpath("//button[text()='Далее']");
 
     // Второй шаг формы
 // Поле Когда привезти самокат
-private By dateInput = By.xpath("//input[@placeholder='* Когда привезти самокат']");
+private final By dateInput = By.xpath("//input[@placeholder='* Когда привезти самокат']");
 
 // Поле Срок аренды
-private By rentalPeriodDropdown = By.className("Dropdown-control");
+private final By rentalPeriodDropdown = By.className("Dropdown-control");
 private static final String rentalPeriodOptionPattern = "//div[@class='Dropdown-option' and text()='двое суток']";
 private static final String metroOptionPattern = "//div[contains(text(), '%s')]";
 
 // Чек-бокс с выбором цвета
-private By blackColorCheckbox = By.id("black");
-private By greyColorCheckbox = By.id("grey");
+private final By blackColorCheckbox = By.id("black");
+private final By greyColorCheckbox = By.id("grey");
 
 // Поле Комментарий для курьера
-private By commentInput = By.xpath("//input[@placeholder='Комментарий для курьера']");
+private final By commentInput = By.xpath("//input[@placeholder='Комментарий для курьера']");
 
 // Кнопка "Заказать"
-private By orderButton = By.xpath("//div[contains(@class, 'Order_Buttons')]/button[text()='Заказать']");
+private final By orderButton = By.xpath("//div[contains(@class, 'Order_Buttons')]/button[text()='Заказать']");
 
 // Кнопка подтверждения "Да"
-private By confirmYesButton = By.xpath("//button[contains(@class,'Button_Button__ra12g') and contains(@class,'Button_Middle__1CSJM') and text()='Заказать']");
+private final By confirmYesButton = By.xpath("//button[contains(@class,'Button_Button__ra12g') and contains(@class,'Button_Middle__1CSJM') and text()='Заказать']");
 
 // Модальное окно подтверждения заказа
-private By orderModalHeader = By.className("Order_ModalHeader__3FDaJ");
+private final By orderModalHeader = By.className("Order_ModalHeader__3FDaJ");
 
 // Окно с подтверждением заказа
-private By orderConfirmation = By.xpath("//*[contains(text(), 'Заказ оформлен')]");
+private final By orderConfirmation = By.xpath("//*[contains(text(), 'Заказ оформлен')]");
 
 
     public void acceptCookiesIfPresent() {
@@ -125,7 +125,6 @@ WebElement dateElement = wait.until(ExpectedConditions.visibilityOfElementLocate
     public boolean isOrderConfirmed() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(orderConfirmation))
                 .getText().contains("Заказ оформлен");
-
 
     }
 

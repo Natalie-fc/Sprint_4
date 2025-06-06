@@ -2,11 +2,7 @@ package practicum.tests;
 
 
 import org.junit.Test;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import practicum.pageobjects.MainPage;
-import java.time.Duration;
 import static org.junit.Assert.assertTrue;
 
 
@@ -20,12 +16,7 @@ public class MainPageTest extends BaseTest {
         MainPage mainPage = new MainPage(driver);
         mainPage.clickTopButton();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        boolean isFormVisible = wait
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@placeholder,'Имя')]")))
-                .isDisplayed();
-
-        assertTrue("Форма заказа не появилась после нажатия на кнопку", isFormVisible);
+        assertTrue("Форма заказа не появилась после нажатия на кнопку", mainPage.isOrderFormVisible());
 
 }
 
@@ -33,17 +24,10 @@ public class MainPageTest extends BaseTest {
     public void clickBottomButtonShouldOpenOrderForm() {
         MainPage mainPage = new MainPage(driver);
 
-        WebElement bottomButton = driver.findElement(By.cssSelector(".Button_Button__ra12g.Button_Middle__1CSJM"));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", bottomButton);
-
+        mainPage.scrollToBottomButton();
         mainPage.clickBottomButton();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        boolean isFormVisible = wait
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@placeholder,'Имя')]")))
-                .isDisplayed();
-
-        assertTrue("Форма заказа не появилась после нажатия на нижнюю кнопку", isFormVisible);
+        assertTrue("Форма заказа не появилась после нажатия на нижнюю кнопку", mainPage.isOrderFormVisible());
 
     }
 
@@ -53,9 +37,8 @@ public class MainPageTest extends BaseTest {
         MainPage mainPage = new MainPage(driver);
 
         for (int i = 0; i < 8; i++) {
-            WebElement question = driver.findElement(By.id("accordion__heading-" + i));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", question);
 
+            mainPage.scrollToFaqQuestion(i);
             mainPage.clickFaqQuestions(i);
 
             boolean isAnswerVisible = mainPage.isFaqAnswerVisible(i);
