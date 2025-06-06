@@ -1,7 +1,6 @@
 package practicum.tests;
 
-import org.junit.After;
-import org.junit.Before;
+
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,20 +8,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import practicum.pageobjects.MainPage;
 import java.time.Duration;
 import static org.junit.Assert.assertTrue;
-import practicum.helpers.DriverFactory;
 
 
-public class MainPageTest {
 
-    private WebDriver driver;
+public class MainPageTest extends BaseTest {
 
-    @Before
-    public void setUp() {
 
-        driver = DriverFactory.createDriver();
-
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-    }
     @Test
     public void clickTopButtonShouldOpenOrderForm() {
 
@@ -73,10 +64,4 @@ public class MainPageTest {
 
     }
 
-        @After
-        public void teardown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
 }

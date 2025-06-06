@@ -1,21 +1,16 @@
 package practicum.tests;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import practicum.helpers.DriverFactory;
 import practicum.pageobjects.MainPage;
 import practicum.pageobjects.OrderPage;
 
 import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
-public class OrderPageTest {
+public class OrderPageTest extends BaseTest {
 
-    private WebDriver driver;
     private final String name;
     private final String surname;
     private final String address;
@@ -38,13 +33,6 @@ public static Object[][] getData() {
     };
 }
 
-@Before
-    public void setUp() {
-
-    driver = DriverFactory.createDriver();
-    driver.get("https://qa-scooter.praktikum-services.ru/");
-}
-
 @Test
     public void orderShouldBeCreatedSuccessfully() {
     MainPage mainPage = new MainPage(driver);
@@ -58,11 +46,6 @@ public static Object[][] getData() {
     orderPage.confirmOrder();
 
     assertTrue("Окно подтверждения заказа не появилось", orderPage.isOrderConfirmed());
-}
-    @After
-    public void teardown() {
-        if (driver != null) {
-            driver.quit();
-        }
+
     }
 }

@@ -8,6 +8,7 @@ import java.time.Duration;
 
 public class MainPage {
     private WebDriver driver;
+    private WebDriverWait wait;
 
     // кнопка "Заказать" в верхней части страницы
     private By topButton = By.xpath("//div[contains(@class,'Header_Nav')]/button[text()='Заказать']");
@@ -23,26 +24,27 @@ public class MainPage {
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         for (int i = 0; i < 8; i++) {
             faqQuestions[i] = By.id("accordion__heading-" + i);
             faqAnswers[i] = By.id("accordion__panel-" + i);
         }
     }
-    public void clickTopButton() {
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(topButton))
-                .click();
 
+    public void clickTopButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(topButton)).click();
     }
+
     public void clickBottomButton() {
-        driver.findElement(bottomButton).click();
+        wait.until(ExpectedConditions.elementToBeClickable(bottomButton)).click();
     }
     public void clickFaqQuestions(int i) {
-        driver.findElement(faqQuestions[i]).click();
+        wait.until(ExpectedConditions.elementToBeClickable(faqQuestions[i])).click();
     }
     public boolean isFaqAnswerVisible(int i) {
         return
-        driver.findElement(faqAnswers[i]).isDisplayed();
+                wait.until(ExpectedConditions.visibilityOfElementLocated(faqAnswers[i])).isDisplayed();
+
     }
 }
