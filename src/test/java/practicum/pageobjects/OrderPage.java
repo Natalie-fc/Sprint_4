@@ -40,7 +40,8 @@ private By dateInput = By.xpath("//input[@placeholder='* Когда привез
 
 // Поле Срок аренды
 private By rentalPeriodDropdown = By.className("Dropdown-control");
-private By rentalPeriodOption = By.xpath("//div[@class='Dropdown-option' and text()='двое суток']");
+private static final String rentalPeriodOptionPattern = "//div[@class='Dropdown-option' and text()='двое суток']";
+private static final String metroOptionPattern = "//div[contains(text(), '%s')]";
 
 // Чек-бокс с выбором цвета
 private By blackColorCheckbox = By.id("black");
@@ -54,6 +55,9 @@ private By orderButton = By.xpath("//div[contains(@class, 'Order_Buttons')]/butt
 
 // Кнопка подтверждения "Да"
 private By confirmYesButton = By.xpath("//button[contains(@class,'Button_Button__ra12g') and contains(@class,'Button_Middle__1CSJM') and text()='Заказать']");
+
+// Модальное окно подтверждения заказа
+private By orderModalHeader = By.className("Order_ModalHeader__3FDaJ");
 
 // Окно с подтверждением заказа
 private By orderConfirmation = By.xpath("//*[contains(text(), 'Заказ оформлен')]");
@@ -78,7 +82,7 @@ acceptCookiesIfPresent();
 
     driver.findElement(metroStationInput).click();
     driver.findElement(metroStationInput).sendKeys(metro);
-    By metroOption = By.xpath("//div[contains(text(), '" + metro + "')]");
+    By metroOption = By.xpath(String.format(metroOptionPattern, metro));
     wait.until(ExpectedConditions.elementToBeClickable(metroOption)).click();
 
     driver.findElement(phoneInput).sendKeys(phone);
@@ -91,7 +95,7 @@ WebElement dateElement = wait.until(ExpectedConditions.visibilityOfElementLocate
     dateElement.sendKeys(date + Keys.ENTER);
 
         wait.until(ExpectedConditions.elementToBeClickable(rentalPeriodDropdown)).click();
-        By rentalOption = By.xpath("//div[@class='Dropdown-option' and text()='" + rentalPeriod + "']");
+        By rentalOption = By.xpath(String.format(rentalPeriodOptionPattern, rentalPeriod));
         wait.until(ExpectedConditions.elementToBeClickable(rentalOption)).click();
 
 
@@ -109,8 +113,8 @@ WebElement dateElement = wait.until(ExpectedConditions.visibilityOfElementLocate
 
     }
     public void confirmOrder() {
-        By modalText = By.className("Order_ModalHeader__3FDaJ");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(modalText));
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(orderModalHeader));
 
         WebElement confirmButton = wait.until(ExpectedConditions.elementToBeClickable(confirmYesButton));
 
