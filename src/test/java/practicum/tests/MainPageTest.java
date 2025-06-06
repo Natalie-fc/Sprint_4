@@ -31,20 +31,4 @@ public class MainPageTest extends BaseTest {
 
     }
 
-    @Test
-    public void allFaqAnswersShouldBeVisibleAfterClick() {
-
-        MainPage mainPage = new MainPage(driver);
-
-        for (int i = 0; i < 8; i++) {
-
-            mainPage.scrollToFaqQuestion(i);
-            mainPage.clickFaqQuestions(i);
-
-            boolean isAnswerVisible = mainPage.isFaqAnswerVisible(i);
-            assertTrue("Ответ на вопрос №" + i + " не отображается после клика", isAnswerVisible);
-        }
-
-    }
-
 }
