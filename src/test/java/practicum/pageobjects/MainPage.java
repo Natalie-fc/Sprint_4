@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class MainPage {
+    public static final String PAGE_URL = "https://qa-scooter.praktikum-services.ru/";
     private WebDriver driver;
     private WebDriverWait wait;
 

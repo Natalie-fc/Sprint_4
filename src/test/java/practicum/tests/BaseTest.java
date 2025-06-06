@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import practicum.helpers.DriverFactory;
+import practicum.pageobjects.MainPage;
 
 public abstract class BaseTest {
 
@@ -12,7 +13,7 @@ public abstract class BaseTest {
     @Before
     public void setUp() {
         driver = DriverFactory.createDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(MainPage.PAGE_URL);
     }
 
     @After
