@@ -25,7 +25,7 @@ public OrderPageTest(String name, String surname, String address, String metroSt
     this.phone = phone;
 }
 
-@Parameterized.Parameters
+@Parameterized.Parameters(name = "Тестовые данные: {0}, {1}, {2}, {3}, {4}")
 public static Object[][] getData() {
     return new Object[][] {
             {"Артём", "Кирсанов", "ул.Пушкина, д.50", "Румянцево", "89161234567"},
