@@ -64,9 +64,10 @@ public class MainPage {
     public void clickFaqQuestions(int i) {
         wait.until(ExpectedConditions.elementToBeClickable(faqQuestions[i])).click();
     }
-    public boolean isFaqAnswerVisible(int i) {
+
+    public String getFaqAnswerText(int i) {
         return
-                wait.until(ExpectedConditions.visibilityOfElementLocated(faqAnswers[i])).isDisplayed();
+                wait.until(ExpectedConditions.visibilityOfElementLocated(faqAnswers[i])).getText();
 
     }
 }
