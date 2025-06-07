@@ -1,0 +1,34 @@
+package practicum.tests;
+
+
+import org.junit.Test;
+import practicum.pageobjects.MainPage;
+import static org.junit.Assert.assertTrue;
+
+
+
+public class MainPageTest extends BaseTest {
+
+
+    @Test
+    public void clickTopButtonShouldOpenOrderFormTest() {
+
+        MainPage mainPage = new MainPage(driver);
+        mainPage.clickTopButton();
+
+        assertTrue("Форма заказа не появилась после нажатия на кнопку", mainPage.isOrderFormVisible());
+
+}
+
+    @Test
+    public void clickBottomButtonShouldOpenOrderFormTest() {
+        MainPage mainPage = new MainPage(driver);
+
+        mainPage.scrollToBottomButton();
+        mainPage.clickBottomButton();
+
+        assertTrue("Форма заказа не появилась после нажатия на нижнюю кнопку", mainPage.isOrderFormVisible());
+
+    }
+
+}

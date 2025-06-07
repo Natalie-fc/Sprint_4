@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: practicum.tests.FaqTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 56.08 s -- in practicum.tests.FaqTest
