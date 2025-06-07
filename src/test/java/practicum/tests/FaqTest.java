@@ -36,7 +36,7 @@ public class FaqTest extends BaseTest {
     }
 
     @Test
-    public void faqAnswerShouldMatchExpectedText() {
+    public void faqAnswerShouldMatchExpectedTextTest() {
         MainPage mainPage = new MainPage(driver);
         mainPage.scrollToFaqQuestion(questionIndex);
         mainPage.clickFaqQuestions(questionIndex);

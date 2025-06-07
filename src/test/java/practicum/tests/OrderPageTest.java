@@ -34,7 +34,7 @@ public static Object[][] getData() {
 }
 
 @Test
-    public void orderShouldBeCreatedSuccessfully() {
+    public void orderShouldBeCreatedSuccessfullyTest() {
     MainPage mainPage = new MainPage(driver);
     mainPage.clickTopButton();
 

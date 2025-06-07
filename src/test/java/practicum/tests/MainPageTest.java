@@ -11,7 +11,7 @@ public class MainPageTest extends BaseTest {
 
 
     @Test
-    public void clickTopButtonShouldOpenOrderForm() {
+    public void clickTopButtonShouldOpenOrderFormTest() {
 
         MainPage mainPage = new MainPage(driver);
         mainPage.clickTopButton();
@@ -21,7 +21,7 @@ public class MainPageTest extends BaseTest {
 }
 
     @Test
-    public void clickBottomButtonShouldOpenOrderForm() {
+    public void clickBottomButtonShouldOpenOrderFormTest() {
         MainPage mainPage = new MainPage(driver);
 
         mainPage.scrollToBottomButton();
