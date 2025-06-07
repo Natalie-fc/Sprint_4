@@ -41,7 +41,7 @@ public static Object[][] getData() {
     OrderPage orderPage = new OrderPage(driver);
     orderPage.fillForm(name, surname, address, metroStation, phone);
 
-    orderPage.fillSecondForm("04.06.2025", "двое суток", "black", "Позвоните за час");
+    orderPage.fillSecondForm("08.06.2025", "двое суток", "black", "Позвоните за час");
 
     orderPage.confirmOrder();
 

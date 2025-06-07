@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: practicum.tests.MainPageTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.12 s -- in practicum.tests.MainPageTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.65 s -- in practicum.tests.MainPageTest

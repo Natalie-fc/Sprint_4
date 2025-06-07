@@ -51,10 +51,10 @@ private final By greyColorCheckbox = By.id("grey");
 private final By commentInput = By.xpath("//input[@placeholder='Комментарий для курьера']");
 
 // Кнопка "Заказать"
-private final By orderButton = By.xpath("//div[contains(@class, 'Order_Buttons')]/button[text()='Заказать']");
+private final By orderButton = By.xpath("//button[contains(@class, 'Button_Button__ra12g') and contains(@class, 'Button_Middle__1CSJM') and text()='Заказать']");
 
 // Кнопка подтверждения "Да"
-private final By confirmYesButton = By.xpath("//button[contains(@class,'Button_Button__ra12g') and contains(@class,'Button_Middle__1CSJM') and text()='Заказать']");
+private final By confirmYesButton = By.xpath("//button[contains(@class,'Button_Button__ra12g') and contains(@class,'Button_Middle__1CSJM') and text()='Да']");
 
 // Модальное окно подтверждения заказа
 private final By orderModalHeader = By.className("Order_ModalHeader__3FDaJ");
@@ -111,14 +111,15 @@ WebElement dateElement = wait.until(ExpectedConditions.visibilityOfElementLocate
 
         wait.until(ExpectedConditions.elementToBeClickable(orderButton)).click();
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(orderModalHeader));
+
     }
     public void confirmOrder() {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(orderModalHeader));
 
         WebElement confirmButton = wait.until(ExpectedConditions.elementToBeClickable(confirmYesButton));
-
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", confirmButton);
+        confirmButton.click();
 
     }
 
